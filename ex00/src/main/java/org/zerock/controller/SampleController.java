@@ -1,14 +1,15 @@
 package org.zerock.controller;
 
 import lombok.extern.log4j.Log4j;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.*;
 import org.zerock.domain.SampleDTO;
 import org.zerock.domain.SampleDTOList;
+import org.zerock.domain.TodoDTO;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -16,6 +17,12 @@ import java.util.Arrays;
 @RequestMapping("/sample/*")
 @Log4j
 public class SampleController {
+
+    @InitBinder
+    public void initBinder(WebDataBinder binder) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        binder.registerCustomEditor(java.util.Date.class, new CustomDateEditor(dateFormat, false));
+    }
 
     @RequestMapping("")
     public void basic() {
@@ -66,5 +73,12 @@ public class SampleController {
         log.info("list dtos: " + list);
 
         return "ex02Bean";
+    }
+
+    @GetMapping("/ex03")
+    public String ex03(TodoDTO todo) {
+        log.info("todo: " + todo);
+
+        return "ex03";
     }
 }
