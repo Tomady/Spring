@@ -28,10 +28,10 @@ public class SampleController {
         binder.registerCustomEditor(java.util.Date.class, new CustomDateEditor(dateFormat, false));
     }
 
-    @RequestMapping("")
-    public void basic() {
-        log.info("basic............");
-    }
+//    @RequestMapping("")
+//    public void basic() {
+//        log.info("basic............");
+//    }
 
     @RequestMapping(value = "/basic", method = {RequestMethod.GET, RequestMethod.POST})
     public void basicGet() {
