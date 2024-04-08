@@ -1,4 +1,4 @@
-package persistence;
+package org.zerock.persistence;
 
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
