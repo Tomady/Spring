@@ -5,23 +5,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8fcb2faa-d319-4a7f-ab9f-e9d3d11271da" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/zerock/config/RootConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/zerock/config/ServletConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/zerock/config/WebConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/log4jdbc.log4j2.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/persistence/DataSourceTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/persistence/JDBCTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/log4j.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ex00/src/main/java/org/zerock/config/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ex00/src/main/java/org/zerock/config/WebConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/zerock/domain/BoardVO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/zerock/mapper/BoardMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/zerock/service/BoardService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/zerock/service/BoardServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/zerock/mapper/BoardMapperTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/zerock/service/BoardServiceTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/zerock/config/RootConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/zerock/config/RootConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/persistence/DataSourceTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/zerock/persistence/DataSourceTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/persistence/JDBCTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/zerock/persistence/JDBCTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -50,19 +57,34 @@
     <option name="showLibraryContents" value="true" />
     <option name="showMembers" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "JUnit.DataSourceTests.executor": "Run",
-    "JUnit.JDBCTests.executor": "Run",
-    "Maven.ex02 [install].executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/dy/Documents/GitHub/Spring/ex02/src/test/resources",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;JUnit.BoardMapperTests.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BoardMapperTests.testDelete.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BoardMapperTests.testGetList.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BoardMapperTests.testInsert.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BoardMapperTests.testInsertSelectKey.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BoardMapperTests.testRead.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BoardMapperTests.testUpdate.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BoardServiceTests.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BoardServiceTests.testDelete.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BoardServiceTests.testExist.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BoardServiceTests.testGet.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BoardServiceTests.testGetList.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BoardServiceTests.testRegister.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BoardServiceTests.testUpdate.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.DataSourceTests.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.JDBCTests.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.ex02 [install].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Smart Tomcat.ex02.executor&quot;: &quot;Run&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/dy/Documents/GitHub/Spring/ex00&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\dy\Documents\GitHub\Spring\ex02\src\test\resources" />
@@ -73,51 +95,81 @@
     </key>
   </component>
   <component name="RunManager" selected="JUnit.DataSourceTests">
+    <configuration name="BoardServiceTests.testDelete" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ex02" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.zerock.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.zerock.service" />
+      <option name="MAIN_CLASS_NAME" value="org.zerock.service.BoardServiceTests" />
+      <option name="METHOD_NAME" value="testDelete" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BoardServiceTests.testGet" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ex02" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.zerock.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.zerock.service" />
+      <option name="MAIN_CLASS_NAME" value="org.zerock.service.BoardServiceTests" />
+      <option name="METHOD_NAME" value="testGet" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BoardServiceTests.testGetList" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ex02" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.zerock.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.zerock.service" />
+      <option name="MAIN_CLASS_NAME" value="org.zerock.service.BoardServiceTests" />
+      <option name="METHOD_NAME" value="testGetList" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BoardServiceTests.testUpdate" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ex02" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.zerock.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.zerock.service" />
+      <option name="MAIN_CLASS_NAME" value="org.zerock.service.BoardServiceTests" />
+      <option name="METHOD_NAME" value="testUpdate" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="DataSourceTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ex02" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="persistence.*" />
+          <option name="PATTERN" value="org.zerock.persistence.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="persistence" />
-      <option name="MAIN_CLASS_NAME" value="persistence.DataSourceTests" />
+      <option name="PACKAGE_NAME" value="org.zerock.persistence" />
+      <option name="MAIN_CLASS_NAME" value="org.zerock.persistence.DataSourceTests" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="JDBCTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ex02" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="persistence.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="persistence" />
-      <option name="MAIN_CLASS_NAME" value="persistence.JDBCTests" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Tomcat: ex02" type="com.poratu.idea.plugins.tomcat" temporary="true">
-      <predefined_log_file enabled="true" id="Tomcat Localhost Log" />
-      <predefined_log_file enabled="true" id="Tomcat Access Log" />
-      <predefined_log_file id="Tomcat Catalina Log" />
-      <predefined_log_file id="Tomcat Manager Log" />
-      <predefined_log_file id="Tomcat Host Manager Log" />
-      <option name="contextPath" value="/ex02" />
-      <option name="docBase" value="$PROJECT_DIR$/src/main/webapp" />
-      <option name="tomcatInfo">
-        <TomcatInfo>
-          <option name="name" value="Apache Tomcat/9.0.54" />
-          <option name="path" value="$PROJECT_DIR$/../../../../../../Dev/apache-tomcat-9.0.54" />
-          <option name="version" value="9.0.54.0" />
-        </TomcatInfo>
-      </option>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -129,7 +181,7 @@
       <predefined_log_file id="Tomcat Manager Log" />
       <predefined_log_file id="Tomcat Host Manager Log" />
       <option name="catalinaBase" value="C:\Users\dy\.SmartTomcat\ex02\ex02" />
-      <option name="contextPath" value="" />
+      <option name="contextPath" value="/" />
       <option name="docBase" value="C:\Users\dy\Documents\GitHub\Spring\ex02\src\main\webapp" />
       <option name="extraClassPath" value="" />
       <option name="port" value="8090" />
@@ -147,16 +199,20 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.JDBCTests" />
       <item itemvalue="JUnit.DataSourceTests" />
+      <item itemvalue="JUnit.BoardServiceTests.testDelete" />
+      <item itemvalue="JUnit.BoardServiceTests.testGet" />
+      <item itemvalue="JUnit.BoardServiceTests.testGetList" />
+      <item itemvalue="JUnit.BoardServiceTests.testUpdate" />
       <item itemvalue="Smart Tomcat.ex02" />
-      <item itemvalue="Smart Tomcat.Tomcat: ex02" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.DataSourceTests" />
-        <item itemvalue="JUnit.JDBCTests" />
-        <item itemvalue="Smart Tomcat.Tomcat: ex02" />
+        <item itemvalue="JUnit.BoardServiceTests.testUpdate" />
+        <item itemvalue="JUnit.BoardServiceTests.testDelete" />
+        <item itemvalue="JUnit.BoardServiceTests.testGet" />
+        <item itemvalue="JUnit.BoardServiceTests.testGetList" />
       </list>
     </recent_temporary>
   </component>
