@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8fcb2faa-d319-4a7f-ab9f-e9d3d11271da" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/zerock/controller/BoardController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/zerock/controller/BoardControllerTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/zerock/controller/BoardControllerTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/zerock/controller/BoardControllerTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,10 +79,10 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "Smart Tomcat.Tomcat: ex02.executor": "Run",
-    "Smart Tomcat.ex02.executor": "Debug",
+    "Smart Tomcat.ex02.executor": "Run",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/dy/Documents/GitHub/Spring/ex00",
+    "last_opened_file_path": "E:/노랭이/oracleTest-main",
     "settings.editor.selected.configurable": "MavenSettings"
   }
 }]]></component>
@@ -108,6 +107,22 @@
       <option name="PACKAGE_NAME" value="org.zerock.controller" />
       <option name="MAIN_CLASS_NAME" value="org.zerock.controller.BoardControllerTests" />
       <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BoardMapperTests.testGetList" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ex02" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.zerock.mapper.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.zerock.mapper" />
+      <option name="MAIN_CLASS_NAME" value="org.zerock.mapper.BoardMapperTests" />
+      <option name="METHOD_NAME" value="testGetList" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -168,9 +183,6 @@
       <option name="catalinaBase" value="" />
       <option name="contextPath" value="/ex02" />
       <option name="docBase" value="$PROJECT_DIR$/src/main/webapp" />
-      <option name="envOptions">
-        <map />
-      </option>
       <option name="extraClassPath" value="" />
       <option name="tomcatInfo">
         <TomcatInfo>
@@ -180,6 +192,7 @@
         </TomcatInfo>
       </option>
       <option name="vmOptions" value="" />
+      <module name="ex02" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -210,27 +223,22 @@
     </configuration>
     <list>
       <item itemvalue="JUnit.BoardControllerTests" />
-      <item itemvalue="JUnit.DataSourceTests" />
+      <item itemvalue="JUnit.BoardMapperTests.testGetList" />
       <item itemvalue="JUnit.BoardServiceTests.testDelete" />
       <item itemvalue="JUnit.BoardServiceTests.testUpdate" />
+      <item itemvalue="JUnit.DataSourceTests" />
       <item itemvalue="Smart Tomcat.ex02" />
       <item itemvalue="Smart Tomcat.Tomcat: ex02" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.BoardMapperTests.testGetList" />
         <item itemvalue="Smart Tomcat.Tomcat: ex02" />
         <item itemvalue="JUnit.DataSourceTests" />
         <item itemvalue="JUnit.BoardServiceTests.testUpdate" />
         <item itemvalue="JUnit.BoardServiceTests.testDelete" />
       </list>
     </recent_temporary>
-  </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="jdk-11.0.22-corretto-11.0.22-4caba194b151-868cef46" />
-      </set>
-    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
