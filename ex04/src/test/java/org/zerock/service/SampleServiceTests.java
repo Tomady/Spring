@@ -13,7 +13,6 @@ import org.zerock.config.RootConfig;
 @Slf4j
 @ContextConfiguration(classes = {RootConfig.class})
 public class SampleServiceTests {
-
     @Setter(onMethod_ = @Autowired)
     private SampleService service;
 
@@ -25,7 +24,7 @@ public class SampleServiceTests {
 
     @Test
     public void testAdd() throws Exception {
-        log.info(String.valueOf(service.doAdd("123","456")));
+        log.info(String.valueOf(service.doAdd("123", "456")));
     }
 
     @Test

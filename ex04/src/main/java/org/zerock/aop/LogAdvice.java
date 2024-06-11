@@ -14,10 +14,9 @@ import java.util.Arrays;
 @Slf4j
 @Component
 public class LogAdvice {
-
     @Before("execution(* org.zerock.service.SampleService*.*(..))")
     public void logBefore() {
-        log.info("====================");
+        log.info("========================");
     }
 
     @Before("execution(* org.zerock.service.SampleService*.doAdd(String, String)) && args(str1, str2)")
@@ -39,7 +38,6 @@ public class LogAdvice {
         log.info("Target: " + pjp.getTarget());
         log.info("Param: " + Arrays.toString(pjp.getArgs()));
 
-        // invoke method
         Object result = null;
 
         try {
