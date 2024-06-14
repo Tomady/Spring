@@ -175,6 +175,7 @@
         let bigPictureWrapper = document.getElementsByClassName("bigPictureWrapper")[0];
         console.log("bigPictureWrapper", bigPictureWrapper);
         bigPictureWrapper.style.display = "flex";
+        bigPictureWrapper.style.visibility = "visible";
         
         let bigPicture = document.getElementsByClassName("bigPicture")[0];
         bigPicture.innerHTML = "<img src='/display?fileName=" + encodeURI(fileCallPath) + "'>";
