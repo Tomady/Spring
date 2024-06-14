@@ -87,6 +87,7 @@
         let uploadBtn = document.getElementById("uploadBtn");
         let bigPictureWrapper = document.getElementsByClassName("bigPictureWrapper")[0];
         let bigPicture = document.getElementsByClassName("bigPicture")[0];
+        let uploadResult = document.getElementsByClassName("uploadResult")[0].firstChild.nextSibling;
 
         uploadBtn.addEventListener("click", (e) => {
             let formData = new FormData();
@@ -118,8 +119,21 @@
                 bigPictureWrapper.style.visibility = "hidden";
             }, 1000);
         });
+
+        uploadResult.addEventListener("click", "span", function(e) {
+            let targetFile = this.dataset.file;
+            let type = this.dataset.type;
+            let data = {
+                fileName: targetFile,
+                type: type
+            }
+            console.log(targetFile);
+
+            deleteFile(data);
+        });
     });
 
+    // ajax uploadAjaxAction
     async function uploadFile(formData) {
         let url = "/uploadAjaxAction";
         const res = await fetch(url, {
@@ -131,6 +145,23 @@
             let result = await res.json();
             showUploadedFile(result);
             document.getElementsByClassName("uploadDiv")[0].innerHTML = cloneObj.innerHTML;
+        }
+    }
+
+    // ajax deleteFile
+    async function deleteFile(data) {
+        let url = "/deleteFile";
+        const res = await fetch(url, {
+            method: "post",
+            body: {
+                fileName: targetFile,
+                type: type
+            }
+        });
+
+        if(res.ok) {
+            let result = await res.text();
+            alert(result);
         }
     }
 
@@ -160,12 +191,13 @@
         uploadResultArr.forEach((obj) => {
             if(!obj.image) {
                 let fileCallPath = encodeURIComponent(obj.uploadPath + "/" + obj.uuid + "_" + obj.fileName);
-                str += "<li><a href='/download?fileName=" + fileCallPath + "'><img src='/resources/img/attach.png'>" + obj.fileName + "</a></li>";
+                let fileLink = fileCallPath.replace(new RegExp(/\\/g), "/");
+                str += "<li><div><a href='/download?fileName=" + fileCallPath + "'><img src='/resources/img/attach.png'>" + obj.fileName + "</a><span data-file=\'" + fileCallPath + "\' data-type='file'> x </span></div></li>";
             } else {
                 let fileCallPath = encodeURIComponent(obj.uploadPath + "/s_" + obj.uuid + "_" + obj.fileName);
                 let originPath = obj.uploadPath + "\\" + obj.uuid + "_" + obj.fileName;
                 originPath = originPath.replace(new RegExp(/\\/g), "/");
-                str += "<li><a href=\"javascript:showImage(\'" + originPath + "\')\"><img src='/display?fileName=" + fileCallPath + "'></a></li>";
+                str += "<li><a href=\"javascript:showImage(\'" + originPath + "\')\"><img src='/display?fileName=" + fileCallPath + "'></a><span data-file=\'" + fileCallPath + "\' data-type='image'> x </span></li>";
             }
         });
         uploadResult.innerHTML = str;
