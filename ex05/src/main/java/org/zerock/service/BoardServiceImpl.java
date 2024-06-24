@@ -1,7 +1,8 @@
 package org.zerock.service;
 
-import lombok.AllArgsConstructor;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.zerock.domain.BoardVO;
 import org.zerock.domain.Criteria;
@@ -11,8 +12,8 @@ import java.util.List;
 
 @Slf4j
 @Service
-@AllArgsConstructor
 public class BoardServiceImpl implements BoardService {
+    @Setter(onMethod_ = @Autowired)
     private BoardMapper mapper;
 
     @Override

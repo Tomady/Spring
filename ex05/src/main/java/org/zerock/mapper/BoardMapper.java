@@ -6,16 +6,8 @@ import org.zerock.domain.Criteria;
 
 import java.util.List;
 
-@Mapper
 public interface BoardMapper {
 
-//    @Select("select * " +
-//            "from(" +
-//                "select /*+ index_desc(tbl_board pk_board)*/ rownum rn, bno, title, writer, content, regdate, updatedate " +
-//                "from tbl_board " +
-//                "where rownum <= #{pageNum} * #{amount} " +
-//            ") " +
-//            "where rn > (#{pageNum} - 1) * #{amount}")
     public List<BoardVO> getListWithPaging(Criteria cri);
 
     @Select("select * from tbl_board " +

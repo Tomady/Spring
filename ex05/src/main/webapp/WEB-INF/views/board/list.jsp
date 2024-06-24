@@ -47,17 +47,17 @@
                             <div class="col-lg-12">
                                 <form id="searchForm" action="/board/list" method="get">
                                     <select name="type">
-                                        <option value="" th:selected="${pageMaker.cri.type} == null">--</option>
-                                        <option value="T" th:selected="${pageMaker.cri.type} eq 'T'">제목</option>
-                                        <option value="C" th:selected="${pageMaker.cri.type} eq 'C'">내용</option>
-                                        <option value="W" th:selected="${pageMaker.cri.type} eq 'W'">작성자</option>
-                                        <option value="TC" th:selected="${pageMaker.cri.type} eq 'TC'">제목 or 내용</option>
-                                        <option value="TW" th:selected="${pageMaker.cri.type} eq 'TW'">제목 or 작성자</option>
-                                        <option value="TWC" th:selected="${pageMaker.cri.type} eq 'TWC'">제목 or 내용 or 작성자</option>
+                                        <option value="" <c:out value="${pageMaker.cri.type == null ? 'selected' : ''}"/>>--</option>
+                                        <option value="T" <c:out value="${pageMaker.cri.type eq 'T' ? 'selected' : ''}"/>>제목</option>
+                                        <option value="C" <c:out value="${pageMaker.cri.type eq 'C' ? 'selected' : ''}"/>>내용</option>
+								        <option value="W" <c:out value="${pageMaker.cri.type eq 'W' ? 'selected' : ''}"/>>작성자</option>
+                                        <option value="TC" <c:out value="${pageMaker.cri.type eq 'TC' ? 'selected' : ''}"/>>제목 or 내용</option>
+                                        <option value="TW" <c:out value="${pageMaker.cri.type eq 'TW' ? 'selected' : ''}"/>>제목 or 작성자</option>
+                                        <option value="TWC" <c:out value="${pageMaker.cri.type eq 'TWC' ? 'selected' : ''}"/>>제목 or 내용 or 작성자</option>
                                     </select>
-                                    <input type="text" name="keyword" th:value="${pageMaker.cri.keyword}">
-                                    <input type="hidden" name="pageNum" th:value="${pageMaker.cri.pageNum}">
-                                    <input type="hidden" name="amount" th:value="${pageMaker.cri.amount}">
+                                    <input type='text' name='keyword' value='<c:out value="${pageMaker.cri.keyword}"/>' />
+                                    <input type='hidden' name='pageNum' value='<c:out value="${pageMaker.cri.pageNum}"/>' />
+                                    <input type='hidden' name='amount' value='<c:out value="${pageMaker.cri.amount}"/>' />
                                     <button class="btn btn-default">Search</button>
                                 </form>
                             </div>
@@ -65,23 +65,40 @@
 
                         <div class="pull-right">
                             <ul class="pagination">
-                                <li class="paginate_button previous" th:if="${pageMaker.prev}">
-                                    <a th:href="${pageMaker.startPage -1}">Previous</a>
-                                </li>
-                                <li th:attr="class=${pageMaker.cri.pageNum == num} ? 'paginate_button active' : 'paginate_button'" th:each="num : ${#numbers.sequence(pageMaker.startPage, pageMaker.endPage)}">
-                                    <a th:href="${num}" th:text="${num}"></a>
-                                </li>
-                                <li class="paginate_button next" th:if="${pageMaker.next}">
-                                    <a th:href="${pageMaker.endPage + 1}">Next</a>
-                                </li>
+                                <%-- 
+                                    <c:if test="${pageMaker.prev}">
+                                        <li class="paginate_button previous"><a href="#">Previous</a></li>
+                                    </c:if>
+
+                                    <c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+                                        <li class="paginate_button"><a href="#">${num}</a></li>
+                                    </c:forEach>
+
+                                    <c:if test="${pageMaker.next}">
+                                        <li class="paginate_button next"><a href="#">Next</a></li>
+                                    </c:if>
+                                --%>
+                                <c:if test="${pageMaker.prev}">
+							        <li class="paginate_button previous"><a	href="${pageMaker.startPage -1}">Previous</a></li>
+						        </c:if>
+
+                                <c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+							        <li class="paginate_button" "${pageMaker.cri.pageNum == num ? 'active' : ''}">
+								        <a href="${num}">${num}</a>
+							        </li>
+						        </c:forEach>
+
+                                <c:if test="${pageMaker.next}">
+							        <li class="paginate_button next"><a href="${pageMaker.endPage +1 }">Next</a></li>
+						        </c:if>
                             </ul>
                         </div>
 
                         <form id="actionForm" action="/board/list" method="get">
-                            <input type="hidden" name="pageNum" th:value="${pageMaker.cri.pageNum}">
-                            <input type="hidden" name="amount" th:value="${pageMaker.cri.amount}">
-                            <input type="hidden" name="type" th:value="${pageMaker.cri.type}">
-                            <input type="hidden" name="keyword" th:value="${pageMaker.cri.keyword}">
+                            <input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
+                            <input type="hidden" name="amount" value="${pageMaker.cri.amount}">
+                            <input type="hidden" name="type" value="<c:out value='${pageMaker.cri.type}'/>">
+                            <input type="hidden" name="keyword"	value='<c:out value="${ pageMaker.cri.keyword }"/>'>
                         </form>
 
                         <!-- Modal -->
@@ -173,7 +190,6 @@
 
             searchForm.find("input[name='pageNum']").val("1");
             e.preventDefault();
-
             searchForm.submit();
         });
     });

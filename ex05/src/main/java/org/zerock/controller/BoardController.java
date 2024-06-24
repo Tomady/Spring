@@ -5,7 +5,9 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -23,14 +25,11 @@ import org.zerock.domain.Criteria;
 import org.zerock.domain.PageDTO;
 import org.zerock.service.BoardService;
 
-import lombok.AllArgsConstructor;
-
 @Controller
 @Slf4j
 @RequestMapping("/board/*")
-@AllArgsConstructor
 public class BoardController {
-
+	@Setter(onMethod_ = @Autowired)
 	private BoardService service;
 
 	@GetMapping("/register")
@@ -40,7 +39,6 @@ public class BoardController {
 
 	@GetMapping("/list")
 	public void list(Criteria cri, Model model) {
-
 		log.info("list: " + cri);
 		model.addAttribute("list", service.getList(cri));
 		// model.addAttribute("pageMaker", new PageDTO(cri, 123));
@@ -72,7 +70,6 @@ public class BoardController {
 
 	@GetMapping({ "/get", "/modify" })
 	public void get(@RequestParam("bno") int bno, @ModelAttribute("cri") Criteria cri, Model model) {
-
 		log.info("/get or modify");
 		model.addAttribute("board", service.get(bno));
 	}
@@ -95,7 +92,6 @@ public class BoardController {
 
 	@PostMapping("/remove")
 	public String remove(@RequestParam("bno") int bno, Criteria cri, RedirectAttributes rttr) {
-
 		log.info("remove..." + bno);
 
 //		List<BoardAttachVO> attachList = service.getAttachList(bno);
@@ -122,13 +118,10 @@ public class BoardController {
 	    attachList.forEach(attach -> {
 	      try {        
 	        Path file  = Paths.get("C:\\upload\\"+attach.getUploadPath()+"\\" + attach.getUuid()+"_"+ attach.getFileName());
-	        
 	        Files.deleteIfExists(file);
 	        
 	        if(Files.probeContentType(file).startsWith("image")) {
-	        
 	          Path thumbNail = Paths.get("C:\\upload\\"+attach.getUploadPath()+"\\s_" + attach.getUuid()+"_"+ attach.getFileName());
-	          
 	          Files.delete(thumbNail);
 	        }
 	

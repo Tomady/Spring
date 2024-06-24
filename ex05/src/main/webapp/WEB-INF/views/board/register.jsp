@@ -138,22 +138,20 @@
         // add submit button event
         submitBtn.addEventListener("click", (e) => {
             e.preventDefault();
-            console.log("submit clicked");
 
             let str = "";
             let uploadResultLi = uploadResult.children[0].children;
+            let appendDiv = document.createElement("div");
 
             Array.from(uploadResultLi).forEach((obj, idx) => {
-                console.dir(obj);
-
                 str += "<input type='hidden' name='attachList[" + idx + "].fileName' value='" + obj.dataset.filename + "'>";
                 str += "<input type='hidden' name='attachList[" + idx + "].uuid' value='" + obj.dataset.uuid + "'>";
                 str += "<input type='hidden' name='attachList[" + idx + "].uploadPath' value='" + obj.dataset.path + "'>";
                 str += "<input type='hidden' name='attachList[" + idx + "].fileType' value='" + obj.dataset.type + "'>";
             });
-
-            formObj.innerHTML += str;
-            console.log("submit", formObj);
+            
+            appendDiv.innerHTML = str;
+            formObj.append(appendDiv);
             formObj.submit();
         });
 
@@ -189,8 +187,20 @@
                 let targetFile = deleteBtn.dataset.file;
                 let type = deleteBtn.dataset.type;
                 let targetLi = deleteBtn.closest("li");
-                let data = {fileName: targetFile, type:type};
-                let result = deleteFile(data);
+                let data = {
+                    fileName: targetFile,
+                    type: type,
+                };
+                let formBody = [];
+
+                for(let prop in data) {
+                    let encodedKey = encodeURIComponent(prop);
+                    let encodedValue = encodeURIComponent(data[prop]);
+                    formBody.push(encodedKey + "=" + encodedValue);
+                }
+                formBody = formBody.join("&");
+
+                let result = deleteFile(formBody);
 
                 result.then(() => {
                     targetLi.remove();
@@ -281,10 +291,11 @@
         let url = "/deleteFile";
         let res = await fetch(url, {
             method: "post",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
             body: data
         });
-
-        console.log(res);
 
         if(res.ok) {
             let result = await res.text();

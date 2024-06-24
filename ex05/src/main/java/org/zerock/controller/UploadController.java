@@ -11,16 +11,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.zerock.domain.AttachFileDTO;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.UnsupportedEncodingException;
+import java.io.*;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.nio.file.Files;
@@ -79,7 +74,6 @@ public class UploadController {
         }
 
         for(MultipartFile multipartFile : uploadFile) {
-            log.info("진입");
             AttachFileDTO attachDTO = new AttachFileDTO();
             String uploadFileName = multipartFile.getOriginalFilename();
             UUID uuid = UUID.randomUUID();
@@ -111,13 +105,11 @@ public class UploadController {
                     Thumbnailator.createThumbnail(multipartFile.getInputStream(), thumbnail, 100, 100);
                     thumbnail.close();
                 }
-
                 list.add(attachDTO);
             } catch (Exception e) {
                 log.error(e.getMessage());
             }
         }
-
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
 
@@ -135,13 +127,11 @@ public class UploadController {
 
         try {
             HttpHeaders header = new HttpHeaders();
-
             header.add("Content-Type", Files.probeContentType(file.toPath()));
             result = new ResponseEntity<>(FileCopyUtils.copyToByteArray(file), header, HttpStatus.OK);
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return result;
     }
 
@@ -181,14 +171,26 @@ public class UploadController {
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-
         return new ResponseEntity<Resource>(resource, headers, HttpStatus.OK);
+    }
+
+    @PostMapping("/testPost")
+    @ResponseBody
+    public ResponseEntity<String> testAPI(@RequestParam(value = "fileName", defaultValue = "1") String fileName, String age) {
+        log.info("/testAPI: ");
+        log.info("file " + fileName);
+        log.info("age " + age);
+
+//        String messageBody = StreamUtils.copyToString(inputStream, StandardCharsets.UTF_8);
+//        log.info("stream: " + messageBody);
+
+        return new ResponseEntity<>("gg", HttpStatus.OK);
     }
 
     @PostMapping("/deleteFile")
     @ResponseBody
     public ResponseEntity<String> deleteFile(String fileName, String type) {
-        log.info("deleteFile: " + fileName);
+        log.info("deleteFile: " + fileName + ", " + type);
         File file;
 
         try {
@@ -198,6 +200,7 @@ public class UploadController {
             if(type.equals("image")) {
                 String largeFileName = file.getAbsolutePath().replace("s_", "");
                 log.info("largeFileName: " + largeFileName);
+
                 file = new File(largeFileName);
                 file.delete();
             }
@@ -206,7 +209,6 @@ public class UploadController {
 
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-
         return new ResponseEntity<String>("deleted", HttpStatus.OK);
     }
 
@@ -226,7 +228,6 @@ public class UploadController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return false;
     }
 }
